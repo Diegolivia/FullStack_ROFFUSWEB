@@ -22,12 +22,7 @@
 /ROFFUSNetCore/Roffus.Service/bin/Debug
 /ROFFUSNetCore/Roffus.Service/obj/Debug
 *.cache
-*.cache
-*.cache
-*.cache
-*.cache
-*.cache
-*.cache
+
 ROFFUSNetCore/Roffus.Api/obj/project.assets.json
 ROFFUSNetCore/Roffus.Api/obj/Roffus.Api.csproj.nuget.cache
 ROFFUSNetCore/Roffus.Api/obj/Roffus.Api.csproj.nuget.dgspec.json
