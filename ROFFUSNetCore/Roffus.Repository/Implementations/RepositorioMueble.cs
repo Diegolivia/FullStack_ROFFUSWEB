@@ -6,13 +6,27 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Roffus.Repository.Implementations
 {
- public class RepositorioMueble :IRepositorioMueble
+    public class RepositorioMueble : IRepositorioMueble
     {
         private ApplicationDbContext Context;
         public RepositorioMueble(ApplicationDbContext Context)
         {
-            this.Context=Context;
-        }       
+            this.Context = Context;
+        }
+
+        public bool Insertar(Mueble entity)
+        {
+            Context.Muebles.Add(entity);
+            Context.SaveChanges();
+            return true;
+        }
+
+        public bool Actualizar(Mueble entity)
+        {
+            Context.Entry(entity).State = EntityState.Modified;
+            Context.SaveChanges();
+            return true;
+        }
 
         public bool Eliminar(Mueble entity)
         {
@@ -32,19 +46,10 @@ namespace Roffus.Repository.Implementations
 
         }
 
-        public bool Insertar(Mueble entity)
+        public List<Mueble> ListByCategory(string cat)
         {
-            Context.Muebles.Add(entity);
-            Context.SaveChanges();
-            return true;
+            var Mueble = Context.Muebles.Where(X => X.CodCategoria.NombreCategoria.Equals(cat)).ToList();
+            return Mueble;
         }
-
-        public bool Actualizar(Mueble entity)
-        {
-            Context.Entry(entity).State=EntityState.Modified;
-            Context.SaveChanges();
-                        return true;
-        }
-
-  }
+    }
 }

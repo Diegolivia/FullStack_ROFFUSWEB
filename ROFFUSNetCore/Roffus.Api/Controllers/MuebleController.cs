@@ -25,8 +25,9 @@ namespace Roffus.Api.Controllers
             return servicioMueble.Listar();
         }
 
-        [HttpGet("{id}", Name="GetMueble")]
-        public ActionResult<Mueble> Get(int id)
+        //Por ID, no utilizado
+        //[HttpGet("{id}", Name="GetMueble")]
+       /* public ActionResult<Mueble> Get(int id)
         {
             var autor = servicioMueble.ListarPorId(id);
             if(autor== null)
@@ -34,7 +35,20 @@ namespace Roffus.Api.Controllers
                 return NotFound();
             }
             return autor;
+        }*/
+
+        //Por Categoria, usable
+        [HttpGet("{cat}", Name="GetMueble")]
+        public ActionResult<IEnumerable<Mueble>> Get(string cat)
+        {
+            var autor = servicioMueble.ListByCategory(cat);
+            if(autor== null)
+            {
+                return NotFound();
+            }
+            return autor;
         }
+
 
         [HttpPost]
         public ActionResult Post ([FromBody] Mueble mueble)
@@ -76,6 +90,9 @@ namespace Roffus.Api.Controllers
              return new  CreatedAtRouteResult("GetMueble",id=mueble.CodMueble,mueble);
 
         }
+
+        
+        
 
     }
 }
