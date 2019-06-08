@@ -7,3 +7,17 @@
 /ROFFUSDB/.vs/
 
 /ROFFUSDB/packages/
+
+
+/ROFFUSNetCore/.vscode
+/ROFFUSNetCore/Roffus.Domain/bin/Debug
+/ROFFUSNetCore/Roffus.Domain/bin/Debug
+
+/ROFFUSNetCore/Roffus.Api/bin/Debug
+/ROFFUSNetCore/Roffus.Api/obj/Debug
+
+/ROFFUSNetCore/Roffus.Repository/bin/Debug
+/ROFFUSNetCore/Roffus.Repository/obj/Debug
+
+/ROFFUSNetCore/Roffus.Service/bin/Debug
+/ROFFUSNetCore/Roffus.Service/obj/Debug
