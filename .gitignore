@@ -27,6 +27,7 @@ ROFFUSNetCore/Roffus.Api/obj/project.assets.json
 ROFFUSNetCore/Roffus.Api/obj/Roffus.Api.csproj.nuget.cache
 ROFFUSNetCore/Roffus.Api/obj/Roffus.Api.csproj.nuget.dgspec.json
 ROFFUSNetCore/Roffus.Api/obj/Roffus.Api.csproj.nuget.g.props
+
 ROFFUSNetCore/Roffus.Domain/obj/Debug/netstandard2.0/Roffus.Domain.AssemblyInfo.cs
 ROFFUSNetCore/Roffus.Domain/obj/Debug/netstandard2.0/Roffus.Domain.AssemblyInfoInputs.cache
 ROFFUSNetCore/Roffus.Domain/obj/Debug/netstandard2.0/Roffus.Domain.assets.cache
@@ -38,10 +39,12 @@ ROFFUSNetCore/Roffus.Domain/obj/project.assets.json
 ROFFUSNetCore/Roffus.Domain/obj/Roffus.Domain.csproj.nuget.cache
 ROFFUSNetCore/Roffus.Domain/obj/Roffus.Domain.csproj.nuget.dgspec.json
 ROFFUSNetCore/Roffus.Domain/obj/Roffus.Domain.csproj.nuget.g.props
+
 ROFFUSNetCore/Roffus.Repository/obj/project.assets.json
 ROFFUSNetCore/Roffus.Repository/obj/Roffus.Repository.csproj.nuget.cache
 ROFFUSNetCore/Roffus.Repository/obj/Roffus.Repository.csproj.nuget.dgspec.json
 ROFFUSNetCore/Roffus.Repository/obj/Roffus.Repository.csproj.nuget.g.props
+
 ROFFUSNetCore/Roffus.Service/obj/project.assets.json
 ROFFUSNetCore/Roffus.Service/obj/Roffus.Service.csproj.nuget.cache
 ROFFUSNetCore/Roffus.Service/obj/Roffus.Service.csproj.nuget.dgspec.json
