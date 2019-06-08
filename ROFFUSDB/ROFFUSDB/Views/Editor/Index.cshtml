@@ -1,0 +1,189 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<link rel="stylesheet" href="~/css/styles.css">
+
+
+<section class="barra">
+    <h1 class="logo">ROFFUS</h1>
+    <div class="menu clearfix">
+        <div class="btn-construccion"><div class="icon"></div></div>
+        <div class="btn-capture"><div class="icon"></div></div>
+
+        <div class="btn-proyecto"><div class="icon"></div></div>
+    </div>
+</section>
+
+<section class="construir">
+    <div class="filtro"></div>
+    <div class="box">
+        <div class="title">
+            <h3>Elige la forma de la habiracion</h3>
+            <div class="btn-cerrar"></div>
+        </div>
+        <div class="contenido">
+        </div>
+        <div class="info">
+            <label>Superficie: <input type="text" value="16m2"></label>
+            <button>Crear</button>
+        </div>
+    </div>
+
+</section>
+<section class="panel">
+    <div class="zona-contenedor">
+        <h3 class="zona-titulo">Muebles</h3>
+        <ul class="zona-opciones">
+            <li class="dormitorio">Dormitorio</li>
+            <li class="cocina">Cocina</li>
+            <li class="baño">Baño</li>
+            <li class="comedor">Comedor</li>
+        </ul>
+    </div>
+    <div class="zona-contenedor">
+        <h3 class="zona-titulo">Decorar</h3>
+        <ul class="zona-opciones">
+            <li>Suelos</li>
+            <li>Focos</li>
+            <li>algo mas</li>
+        </ul>
+    </div>
+    <div class="zona-contenedor">
+        <h3 class="zona-titulo">OpcionX</h3>
+        <ul class="zona-opciones">
+            <li>Suelos</li>
+            <li>Focos</li>
+            <li>algo mas</li>
+            <li>Suelos</li>
+            <li>Focos</li>
+        </ul>
+    </div>
+    <div class="zona-contenedor">
+        <h3 class="zona-titulo">OpcionX</h3>
+        <ul class="zona-opciones">
+            <li>Suelos</li>
+            <li>Focos</li>
+            <li>algo mas</li>
+            <li>Suelos</li>
+            <li>Focos</li>
+        </ul>
+    </div>
+    <div class="btn-toggle">-></div>
+</section>
+
+<section class="subpanel">
+    <ul class="subzona-opciones" id="dormitorio">
+        <li>Camas</li>
+        <li>Armarios</li>
+        <li>Comodas</li>
+        <li>Mesas</li>
+    </ul>
+    <ul class="subzona-opciones " id="cocina">
+        <li>Mesas</li>
+        <li>Muebles de cocina</li>
+        <li>Sillas</li>
+        <li>Accesorios</li>
+    </ul>
+    <ul class="subzona-opciones " id="baño">
+        <li>Inodoro</li>
+        <li>Bañeras</li>
+        <li>Lavadoras</li>
+        <li>Grifos</li>
+    </ul>
+    <ul class="subzona-opciones " id="comedor">
+        <li>Mesas</li>
+        <li>Sillas</li>
+        <li>Bancos</li>
+        <li>Barras</li>
+    </ul>
+</section>
+<section class="info">
+    <label>Ancho:<input type="text" id="ancho"></label>
+    <label>Alto:<input type="text" id="alto"></label>
+    <label>Angulo:<input type="text" id="angulo"></label>
+</section>
+<section class="contenedor">
+    <div class="zona-barra clearfix">
+        <div class="btn-cerrar">X</div>
+    </div>
+    <div class="zona-filtros">
+
+    </div>
+    <div class="zona-contenido">
+
+    </div>
+</section>
+
+<!--new project-->
+<section class="nuevo-proyecto clearfix">
+    <div class="filtro">
+        <div class="box">
+            <div class="contenedor">
+                <div class="cabecera">
+                    <h3>Nuevo Proyecto</h3>
+                    <p>Crear nuevo proyecto en blanco</p>
+                </div>
+                <div class="input-field">
+                    <label for="proyecto">Nombre del proyecto</label>
+                    <input id="proyecto" type="text" />
+                </div>
+                <div class="input-field">
+                    <p>Forma de la habitacion</p>
+                    <div class="formas-contenedor">
+
+                    </div>
+                </div>
+                <div class="botones">
+                    <button class="btn-cancelar">Cancelar</button>
+                    <button class="btn-crear">Crear</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<canvas id="c">
+    Tu navegador no soporta el elemento canvas de la especificacion HTML5
+</canvas>
+<script src="~/js/fabric.js"></script>
+<script src="~/js/controls.js"></script>
+<script src="~/js/entitys.js"></script>
+<script src="~/js/obj.js"></script>
+<script src="~/js/evt.js"></script>
+<script src="~/js/main.js"></script>
+<script src="~/js/ui.js"></script>
+
+
+@section scripts{
+    <script>
+        var BDPlantillas = {
+            list: function () {
+                var url = "@Url.Action("Plantilla","List")";
+
+                $.post(url).done(function (data) {
+                    alert(data.length);
+                })
+                /*codigo jquery*/
+                let tmpList = [
+                    new Plantilla(1, 2, 2, "[{x:500,y:500},{x:800,y:500},{x:800,y:800},{x:500,y:800}]"),
+                ];
+                sectionProject.fromDBShowList(tmpList);
+            },
+            findById: function (id) {
+
+                /*
+                    after request
+                */
+                sectionProject.fromDBCreateRoom("[{x:500,y:500},{x:800,y:500},{x:800,y:800},{x:500,y:800}]");
+            }
+        }
+
+
+
+
+    </script>
+
+}

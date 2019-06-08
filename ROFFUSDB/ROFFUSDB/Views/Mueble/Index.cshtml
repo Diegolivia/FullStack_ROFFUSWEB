@@ -1,0 +1,82 @@
+﻿
+@model IEnumerable<Entity.Mueble>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Nuevo Mueble", "Create")
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NombreMueble)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Alto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ancho)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Largo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CodTienda.CodTienda)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CodCategoria.CodCategoria)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Imagen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Icono)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreMueble)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Alto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ancho)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Largo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodTienda.CodTienda)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodCategoria.CodCategoria)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Imagen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Icono)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { CMueble = item.CodMueble }) |
+                @Html.ActionLink("Delete", "Delete", new { CMueble = item.CodMueble })
+            </td>
+        </tr>
+    }
+
+</table>
