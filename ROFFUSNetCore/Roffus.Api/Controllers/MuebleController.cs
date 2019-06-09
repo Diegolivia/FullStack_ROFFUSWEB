@@ -38,10 +38,10 @@ namespace Roffus.Api.Controllers
         }*/
 
         //Por Categoria, usable
-        [HttpGet("{cat}", Name="GetMueble")]
-        public ActionResult<IEnumerable<Mueble>> Get(string cat)
+        [HttpGet("{subcat}", Name="GetMueble")]
+        public ActionResult<IEnumerable<Mueble>> Get(string subcat)
         {
-            var autor = servicioMueble.ListByCategory(cat);
+            var autor = servicioMueble.ListBySubCategory(subcat);
             if(autor== null)
             {
                 return NotFound();

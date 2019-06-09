@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Roffus.Repository.Migrations
 {
-    public partial class init : Migration
+    public partial class nuevo_init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -69,6 +69,26 @@ namespace Roffus.Repository.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Subcategorias",
+                columns: table => new
+                {
+                    codSubCategoria = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    nombreSubCategoria = table.Column<string>(nullable: true),
+                    codigoCategoriaCodCategoria = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Subcategorias", x => x.codSubCategoria);
+                    table.ForeignKey(
+                        name: "FK_Subcategorias_Categorias_codigoCategoriaCodCategoria",
+                        column: x => x.codigoCategoriaCodCategoria,
+                        principalTable: "Categorias",
+                        principalColumn: "CodCategoria",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Muebles",
                 columns: table => new
                 {
@@ -79,7 +99,7 @@ namespace Roffus.Repository.Migrations
                     Ancho = table.Column<double>(nullable: false),
                     Largo = table.Column<double>(nullable: false),
                     CodTienda1 = table.Column<int>(nullable: true),
-                    CodCategoria1 = table.Column<int>(nullable: true),
+                    codSubCategoria = table.Column<int>(nullable: true),
                     Descripcion = table.Column<string>(nullable: true),
                     Imagen = table.Column<string>(nullable: true),
                     Icono = table.Column<string>(nullable: true)
@@ -88,16 +108,16 @@ namespace Roffus.Repository.Migrations
                 {
                     table.PrimaryKey("PK_Muebles", x => x.CodMueble);
                     table.ForeignKey(
-                        name: "FK_Muebles_Categorias_CodCategoria1",
-                        column: x => x.CodCategoria1,
-                        principalTable: "Categorias",
-                        principalColumn: "CodCategoria",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
                         name: "FK_Muebles_TiendasVirtuales_CodTienda1",
                         column: x => x.CodTienda1,
                         principalTable: "TiendasVirtuales",
                         principalColumn: "CodTienda",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Muebles_Subcategorias_codSubCategoria",
+                        column: x => x.codSubCategoria,
+                        principalTable: "Subcategorias",
+                        principalColumn: "codSubCategoria",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -130,6 +150,7 @@ namespace Roffus.Repository.Migrations
                 {
                     CodPaquete = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    nombrePaquete = table.Column<string>(nullable: true),
                     CodPlantilla1 = table.Column<int>(nullable: true),
                     CodUsuario1 = table.Column<int>(nullable: true),
                     NombreListaCodLista = table.Column<int>(nullable: true)
@@ -163,14 +184,14 @@ namespace Roffus.Repository.Migrations
                 column: "CodMueble1");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Muebles_CodCategoria1",
-                table: "Muebles",
-                column: "CodCategoria1");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Muebles_CodTienda1",
                 table: "Muebles",
                 column: "CodTienda1");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Muebles_codSubCategoria",
+                table: "Muebles",
+                column: "codSubCategoria");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Paquetes_CodPlantilla1",
@@ -186,6 +207,11 @@ namespace Roffus.Repository.Migrations
                 name: "IX_Paquetes_NombreListaCodLista",
                 table: "Paquetes",
                 column: "NombreListaCodLista");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Subcategorias_codigoCategoriaCodCategoria",
+                table: "Subcategorias",
+                column: "codigoCategoriaCodCategoria");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -206,10 +232,13 @@ namespace Roffus.Repository.Migrations
                 name: "Muebles");
 
             migrationBuilder.DropTable(
-                name: "Categorias");
+                name: "TiendasVirtuales");
 
             migrationBuilder.DropTable(
-                name: "TiendasVirtuales");
+                name: "Subcategorias");
+
+            migrationBuilder.DropTable(
+                name: "Categorias");
         }
     }
 }

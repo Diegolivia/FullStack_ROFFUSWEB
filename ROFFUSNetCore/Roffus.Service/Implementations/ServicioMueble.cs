@@ -28,8 +28,8 @@ namespace Roffus.Service.Implementations
         public Mueble ListarPorId(int? Id){
             return muebleRepositorio.ListarPorId(Id);
         }
-        public List<Mueble> ListByCategory(string cat){
-            return muebleRepositorio.ListByCategory(cat);
+        public List<Mueble> ListBySubCategory(string subcat){
+            return muebleRepositorio.ListBySubCategory(subcat);
         }
 
     }

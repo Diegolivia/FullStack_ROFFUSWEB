@@ -44,7 +44,7 @@ namespace Roffus.Api
             services.AddTransient<IRepositorioPlantilla, RepositorioPlantilla>();
             services.AddTransient<IRepositorioTiendaVirtual, RepositorioTiendaVirtual>();   
             services.AddTransient<IRepositorioUsuario, RepositorioUsuario>();       
-         
+            services.AddTransient<IRepositorioSubCategoria, RepositorioSubCategoria>();
 
 
             services.AddTransient<IServicioCategoria, ServicioCategoria>();
@@ -54,6 +54,7 @@ namespace Roffus.Api
             services.AddTransient<IServicioPlantilla, ServicioPlantilla>();
             services.AddTransient<IServicioTiendaVirtual, ServicioTiendaVirtual>();   
             services.AddTransient<IServicioUsuario, ServicioUsuario>();
+            services.AddTransient<IServicioSubcategoria, ServicioSubcategoria>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

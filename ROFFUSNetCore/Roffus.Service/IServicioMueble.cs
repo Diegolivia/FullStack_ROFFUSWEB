@@ -5,6 +5,6 @@ namespace Roffus.Service
 {
     public interface IServicioMueble:IServicioCRUD<Mueble>
     {
-         List<Mueble> ListByCategory(string cat);
+         List<Mueble> ListBySubCategory(string subcat);
     }
 }

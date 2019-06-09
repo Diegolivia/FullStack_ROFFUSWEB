@@ -46,9 +46,9 @@ namespace Roffus.Repository.Implementations
 
         }
 
-        public List<Mueble> ListByCategory(string cat)
+        public List<Mueble> ListBySubCategory(string subcat)
         {
-            var Mueble = Context.Muebles.Where(X => X.CodCategoria.NombreCategoria.Equals(cat)).ToList();
+            var Mueble = Context.Muebles.Where(X => X.CodSubCategoria.nombreSubCategoria.Equals(subcat)).ToList();
             return Mueble;
         }
     }

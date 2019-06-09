@@ -5,6 +5,6 @@ namespace Roffus.Repository
 {
     public interface IRepositorioMueble : IRepositorioCRUDE<Mueble>
     {
-      List<Mueble> ListByCategory(string cat);
+      List<Mueble> ListBySubCategory(string subcat);
     }
 }

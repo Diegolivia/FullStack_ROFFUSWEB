@@ -65,8 +65,6 @@ namespace Roffus.Repository.Migrations
 
                     b.Property<double>("Ancho");
 
-                    b.Property<int?>("CodCategoria1");
-
                     b.Property<int?>("CodTienda1");
 
                     b.Property<string>("Descripcion");
@@ -79,11 +77,13 @@ namespace Roffus.Repository.Migrations
 
                     b.Property<string>("NombreMueble");
 
+                    b.Property<int?>("codSubCategoria");
+
                     b.HasKey("CodMueble");
 
-                    b.HasIndex("CodCategoria1");
-
                     b.HasIndex("CodTienda1");
+
+                    b.HasIndex("codSubCategoria");
 
                     b.ToTable("Muebles");
                 });
@@ -99,6 +99,8 @@ namespace Roffus.Repository.Migrations
                     b.Property<int?>("CodUsuario1");
 
                     b.Property<int?>("NombreListaCodLista");
+
+                    b.Property<string>("nombrePaquete");
 
                     b.HasKey("CodPaquete");
 
@@ -128,6 +130,23 @@ namespace Roffus.Repository.Migrations
                     b.HasKey("CodPlantilla");
 
                     b.ToTable("Plantillas");
+                });
+
+            modelBuilder.Entity("Roffus.Domain.Subcategoria", b =>
+                {
+                    b.Property<int>("codSubCategoria")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("codigoCategoriaCodCategoria");
+
+                    b.Property<string>("nombreSubCategoria");
+
+                    b.HasKey("codSubCategoria");
+
+                    b.HasIndex("codigoCategoriaCodCategoria");
+
+                    b.ToTable("Subcategorias");
                 });
 
             modelBuilder.Entity("Roffus.Domain.TiendaVirtual", b =>
@@ -175,13 +194,13 @@ namespace Roffus.Repository.Migrations
 
             modelBuilder.Entity("Roffus.Domain.Mueble", b =>
                 {
-                    b.HasOne("Roffus.Domain.Categoria", "CodCategoria")
-                        .WithMany()
-                        .HasForeignKey("CodCategoria1");
-
                     b.HasOne("Roffus.Domain.TiendaVirtual", "CodTienda")
                         .WithMany()
                         .HasForeignKey("CodTienda1");
+
+                    b.HasOne("Roffus.Domain.Subcategoria", "CodSubCategoria")
+                        .WithMany()
+                        .HasForeignKey("codSubCategoria");
                 });
 
             modelBuilder.Entity("Roffus.Domain.Paquete", b =>
@@ -197,6 +216,13 @@ namespace Roffus.Repository.Migrations
                     b.HasOne("Roffus.Domain.ListaMuebles", "NombreLista")
                         .WithMany()
                         .HasForeignKey("NombreListaCodLista");
+                });
+
+            modelBuilder.Entity("Roffus.Domain.Subcategoria", b =>
+                {
+                    b.HasOne("Roffus.Domain.Categoria", "codigoCategoria")
+                        .WithMany()
+                        .HasForeignKey("codigoCategoriaCodCategoria");
                 });
 #pragma warning restore 612, 618
         }
