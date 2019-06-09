@@ -28,6 +28,12 @@ namespace Roffus.Service.Implementations
         public Paquete ListarPorId(int? Id){
             return paqueteRepositorio.ListarPorId(Id);
         }
+        public List<Paquete> ListByUsuario(string user){
+            return paqueteRepositorio.ListByUsuario(user);
+        }
+        public List<Paquete> ListByListaMuebles(string listmuebles){
+            return paqueteRepositorio.ListByListaMuebles(listmuebles);
+        }
 
     }
 }

@@ -36,6 +36,17 @@ namespace Roffus.Api.Controllers
             return autor;
         }
 
+        [HttpGet("{cat}", Name="GetMueble")]
+        public ActionResult<IEnumerable<Mueble>> Get(string cat)
+        {
+            var autor = servicioMueble.ListByCategory(cat);
+            if(autor== null)
+            {
+                return NotFound();
+            }
+            return autor;
+        }
+
         [HttpPost]
         public ActionResult Post ([FromBody] Paquete paquete)
         {
