@@ -25,7 +25,7 @@ namespace Roffus.Api.Controllers
             return servicioPaquete.Listar();
         }
 
-        [HttpGet("{id}", Name="GetPaquete")]
+        /*[HttpGet("{id}", Name="GetPaquete")]
         public ActionResult<Paquete> Get(int id)
         {
             var autor = servicioPaquete.ListarPorId(id);
@@ -34,12 +34,13 @@ namespace Roffus.Api.Controllers
                 return NotFound();
             }
             return autor;
-        }
+        }*/
 
-        [HttpGet("{cat}", Name="GetMueble")]
-        public ActionResult<IEnumerable<Mueble>> Get(string cat)
+        //por usuario, usable
+        [HttpGet("{user}", Name="GetPaquete")]
+        public ActionResult<IEnumerable<Paquete>> Get(string user)
         {
-            var autor = servicioMueble.ListByCategory(cat);
+            var autor = servicioPaquete.ListByUsuario(user);
             if(autor== null)
             {
                 return NotFound();

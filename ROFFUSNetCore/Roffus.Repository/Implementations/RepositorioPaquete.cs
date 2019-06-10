@@ -46,5 +46,10 @@ namespace Roffus.Repository.Implementations
                         return true;
         }
 
+        public List<Paquete> ListByUsuario(string user){
+             var Paquete = Context.Paquetes.Where(X => X.CodUsuario.NombreUsuario.Equals(user)).ToList();
+            return Paquete;
+          }
+
   }
 }
