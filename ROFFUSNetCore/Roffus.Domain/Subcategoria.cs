@@ -1,6 +1,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
 namespace Roffus.Domain
 {
@@ -11,6 +12,14 @@ namespace Roffus.Domain
 
         public String nombreSubCategoria {get;set; }
 
-        public Categoria codigoCategoria {get; set; }
+      
+
+        //////////////////////////////////////////////////////////
+
+          public int CodCategoria {get; set; }
+          public Categoria Categoria{get;set;}
+
+          public List<Mueble> Muebles {get; set;}
+
     }
 }

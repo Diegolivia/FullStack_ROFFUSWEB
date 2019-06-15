@@ -37,10 +37,5 @@ namespace Roffus.Repository.Implementations
             return SubCategoria;
         }
 
-        public List<Subcategoria> ListByCategory(string cat){
-            var SubCategoria=context.Subcategorias.Where(X => X.codigoCategoria.NombreCategoria.Equals(cat)).ToList();
-            return SubCategoria;
-        }
-
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
-using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
+
 namespace Roffus.Domain
 {
     public class ListaMuebles
@@ -11,7 +12,13 @@ namespace Roffus.Domain
         public double CoordX { get; set; }
         public double CoordY { get; set; }
         public double Rotacion { get; set; }
-        public Mueble CodMueble { get; set; }
+        
+        ///////////////////////////////////////////////////////
+
+        public int CodMueble {get; set;}
+        public Mueble Mueble { get; set; }
+
+        public List<Paquete> Paquetes {get;set;}
 
 
     }

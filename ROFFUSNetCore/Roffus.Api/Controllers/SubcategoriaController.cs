@@ -33,18 +33,6 @@ namespace Roffus.Api.Controllers
             return autor;
         }
 
-        [HttpGet("{cat}", Name="GetListByCategory")]
-        public ActionResult<IEnumerable<Subcategoria>> Get(string cat)
-        {
-            var autor = subcategoriaServicio.ListByCategory(cat);
-            if(autor== null)
-            {
-                return NotFound();
-            }
-            return autor;
-        }
-
-
         [HttpPost]
         public ActionResult Post ([FromBody] Subcategoria subcategoria)
         {

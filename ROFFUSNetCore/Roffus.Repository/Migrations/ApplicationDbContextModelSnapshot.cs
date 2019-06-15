@@ -38,7 +38,7 @@ namespace Roffus.Repository.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("CodMueble1");
+                    b.Property<int>("CodMueble");
 
                     b.Property<double>("CoordX");
 
@@ -50,7 +50,7 @@ namespace Roffus.Repository.Migrations
 
                     b.HasKey("CodLista");
 
-                    b.HasIndex("CodMueble1");
+                    b.HasIndex("CodMueble");
 
                     b.ToTable("ListasMuebles");
                 });
@@ -65,7 +65,7 @@ namespace Roffus.Repository.Migrations
 
                     b.Property<double>("Ancho");
 
-                    b.Property<int?>("CodTienda1");
+                    b.Property<int>("CodTienda");
 
                     b.Property<string>("Descripcion");
 
@@ -77,11 +77,11 @@ namespace Roffus.Repository.Migrations
 
                     b.Property<string>("NombreMueble");
 
-                    b.Property<int?>("codSubCategoria");
+                    b.Property<int>("codSubCategoria");
 
                     b.HasKey("CodMueble");
 
-                    b.HasIndex("CodTienda1");
+                    b.HasIndex("CodTienda");
 
                     b.HasIndex("codSubCategoria");
 
@@ -94,21 +94,21 @@ namespace Roffus.Repository.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("CodPlantilla1");
+                    b.Property<int>("CodLista");
 
-                    b.Property<int?>("CodUsuario1");
+                    b.Property<int>("CodPlantilla");
 
-                    b.Property<int?>("NombreListaCodLista");
+                    b.Property<int>("CodUsuario");
 
                     b.Property<string>("nombrePaquete");
 
                     b.HasKey("CodPaquete");
 
-                    b.HasIndex("CodPlantilla1");
+                    b.HasIndex("CodLista");
 
-                    b.HasIndex("CodUsuario1");
+                    b.HasIndex("CodPlantilla");
 
-                    b.HasIndex("NombreListaCodLista");
+                    b.HasIndex("CodUsuario");
 
                     b.ToTable("Paquetes");
                 });
@@ -138,13 +138,13 @@ namespace Roffus.Repository.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("codigoCategoriaCodCategoria");
+                    b.Property<int>("CodCategoria");
 
                     b.Property<string>("nombreSubCategoria");
 
                     b.HasKey("codSubCategoria");
 
-                    b.HasIndex("codigoCategoriaCodCategoria");
+                    b.HasIndex("CodCategoria");
 
                     b.ToTable("Subcategorias");
                 });
@@ -187,42 +187,49 @@ namespace Roffus.Repository.Migrations
 
             modelBuilder.Entity("Roffus.Domain.ListaMuebles", b =>
                 {
-                    b.HasOne("Roffus.Domain.Mueble", "CodMueble")
-                        .WithMany()
-                        .HasForeignKey("CodMueble1");
+                    b.HasOne("Roffus.Domain.Mueble", "Mueble")
+                        .WithMany("ListaMuebles")
+                        .HasForeignKey("CodMueble")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Roffus.Domain.Mueble", b =>
                 {
-                    b.HasOne("Roffus.Domain.TiendaVirtual", "CodTienda")
-                        .WithMany()
-                        .HasForeignKey("CodTienda1");
+                    b.HasOne("Roffus.Domain.TiendaVirtual", "TiendaVirtual")
+                        .WithMany("CodMueble")
+                        .HasForeignKey("CodTienda")
+                        .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Roffus.Domain.Subcategoria", "CodSubCategoria")
-                        .WithMany()
-                        .HasForeignKey("codSubCategoria");
+                    b.HasOne("Roffus.Domain.Subcategoria", "Subcategoria")
+                        .WithMany("Muebles")
+                        .HasForeignKey("codSubCategoria")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Roffus.Domain.Paquete", b =>
                 {
-                    b.HasOne("Roffus.Domain.Plantilla", "CodPlantilla")
-                        .WithMany()
-                        .HasForeignKey("CodPlantilla1");
+                    b.HasOne("Roffus.Domain.ListaMuebles", "ListaMuebles")
+                        .WithMany("Paquetes")
+                        .HasForeignKey("CodLista")
+                        .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Roffus.Domain.Usuario", "CodUsuario")
-                        .WithMany()
-                        .HasForeignKey("CodUsuario1");
+                    b.HasOne("Roffus.Domain.Plantilla", "Plantilla")
+                        .WithMany("Paquetes")
+                        .HasForeignKey("CodPlantilla")
+                        .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Roffus.Domain.ListaMuebles", "NombreLista")
-                        .WithMany()
-                        .HasForeignKey("NombreListaCodLista");
+                    b.HasOne("Roffus.Domain.Usuario", "Usuario")
+                        .WithMany("Paquetes")
+                        .HasForeignKey("CodUsuario")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Roffus.Domain.Subcategoria", b =>
                 {
-                    b.HasOne("Roffus.Domain.Categoria", "codigoCategoria")
-                        .WithMany()
-                        .HasForeignKey("codigoCategoriaCodCategoria");
+                    b.HasOne("Roffus.Domain.Categoria", "Categoria")
+                        .WithMany("Subcategorias")
+                        .HasForeignKey("CodCategoria")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }
