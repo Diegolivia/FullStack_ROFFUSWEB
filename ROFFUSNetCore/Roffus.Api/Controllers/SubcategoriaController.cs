@@ -22,10 +22,21 @@ namespace Roffus.Api.Controllers
             return subcategoriaServicio.Listar();
         }
 
-        [HttpGet("{id}", Name="GetSubcategoria")]
+       /* [HttpGet("{id}", Name="GetSubcategoria")]
         public ActionResult<Subcategoria> Get(int id)
         {
             var autor = subcategoriaServicio.ListarPorId(id);
+            if(autor== null)
+            {
+                return NotFound();
+            }
+            return autor;
+        }*/
+        //por cat
+        [HttpGet("{cat}", Name="GetSubcategoria")]
+        public ActionResult<IEnumerable<Subcategoria>> Get(string cat)
+        {
+            var autor = subcategoriaServicio.ListByCategory(cat);
             if(autor== null)
             {
                 return NotFound();

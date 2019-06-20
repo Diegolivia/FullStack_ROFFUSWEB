@@ -36,6 +36,10 @@ namespace Roffus.Repository.Implementations
             var SubCategoria=context.Subcategorias.FirstOrDefault(x => x.codSubCategoria == Id);
             return SubCategoria;
         }
+         public List<Subcategoria> ListByCategory(string cat){
+            var SubCategoria=context.Subcategorias.Where(X => X.Categoria.NombreCategoria.Equals(cat)).ToList();
+            return SubCategoria;
+        }
 
     }
 }
