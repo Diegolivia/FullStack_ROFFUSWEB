@@ -31,7 +31,8 @@ namespace Roffus.Service.Implementations
         }
 
         public List<Subcategoria> ListByCategory(string cat){
-            return subcategoriaRepositorio.ListByCategory(cat);
+            //return subcategoriaRepositorio.ListByCategory(cat);
+            return null;
         }
 
     }

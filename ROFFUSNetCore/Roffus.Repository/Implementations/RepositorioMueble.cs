@@ -28,6 +28,16 @@ namespace Roffus.Repository.Implementations
             return true;
         }
 
+         public List<Mueble> Filtrador(Mueble entity)
+        {
+            var Mueblee = Context.Muebles
+                                        .Where(
+                                        x => x.Subcategoria.nombreSubCategoria.Equals(entity.Subcategoria.nombreSubCategoria
+                                        ))
+                                        .ToList();
+            return Mueblee;
+        }
+
         public bool Eliminar(Mueble entity)
         {
             Context.Muebles.Remove(entity);
