@@ -31,7 +31,7 @@ namespace Roffus.Repository.Implementations
          public List<Mueble> Filtrador(Mueble entity)
         {
             var Mueblee = Context.Muebles
-                                        .Where(
+                                    .Where(
                                         x => x.Subcategoria.nombreSubCategoria.Equals(entity.Subcategoria.nombreSubCategoria
                                         ))
                                         .ToList();
