@@ -18,6 +18,7 @@ using Roffus.Repository;
 using Roffus.Repository.Implementations;
 using Roffus.Service;
 using Roffus.Service.Implementations;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace Roffus.Api
 {
@@ -57,11 +58,42 @@ namespace Roffus.Api
             services.AddTransient<IServicioSubcategoria, ServicioSubcategoria>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+        
+             services.AddSwaggerGen(swagger =>
+            {
+                var contact = new Contact() { Name = SwaggerConfiguration.ContactName, Url = SwaggerConfiguration.ContactUrl };
+                swagger.SwaggerDoc(SwaggerConfiguration.DocNameV1,
+                                    new Info
+                                    {
+                                        Title = SwaggerConfiguration.DocInfoTitle,
+                                        Version = SwaggerConfiguration.DocInfoVersion,
+                                        Description = SwaggerConfiguration.DocInfoDescription,
+                                        Contact = contact
+                                    }
+                                    );
+            });
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("Todos",
+                builder => builder.WithOrigins("*").WithHeaders("*").WithMethods("*"));
+            });
+        
         }
 
+        //https://localhost:5001/swagger/index.html
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+           // Enable middleware to serve generated Swagger as a JSON endpoint.
+            app.UseSwagger();
+
+            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), specifying the Swagger JSON endpoint.
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint(SwaggerConfiguration.EndpointUrl, SwaggerConfiguration.EndpointDescription);
+            });
+           
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -72,7 +104,8 @@ namespace Roffus.Api
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+            app.UseCors("Todos");
+            //app.UseHttpsRedirection();
             app.UseMvc();
         }
     }

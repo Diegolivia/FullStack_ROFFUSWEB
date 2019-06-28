@@ -4,6 +4,7 @@ import Home from './views/Home.vue'
 import Layout from './components/Layout.vue'
 import Login from './components/Login.vue'
 import Register from './components/Register.vue'
+import Usuario from './components/Usuario.vue'
 
 Vue.use(Router)
 
@@ -30,6 +31,11 @@ export default new Router({
       path: '/register',
       name: 'register',
       component: Register
+    },
+    {
+      path: '/usuario',
+      name: 'usuario',
+      component: Usuario
     }
   ]
 })
