@@ -34,3 +34,12 @@ C:\Users\Braulio\Documents\GitHub\ROFFUSWEB\ROFFUSNetCore\Roffus.Domain\obj\Debu
 C:\Users\Braulio\Documents\GitHub\ROFFUSWEB\ROFFUSNetCore\Roffus.Domain\obj\Debug\netstandard2.0\Roffus.Domain.AssemblyInfo.cs
 C:\Users\Braulio\Documents\GitHub\ROFFUSWEB\ROFFUSNetCore\Roffus.Domain\obj\Debug\netstandard2.0\Roffus.Domain.dll
 C:\Users\Braulio\Documents\GitHub\ROFFUSWEB\ROFFUSNetCore\Roffus.Domain\obj\Debug\netstandard2.0\Roffus.Domain.pdb
+D:\github\ROFFUSWEB\ROFFUSNetCore\Roffus.Domain\bin\Debug\netstandard2.0\Roffus.Domain.deps.json
+D:\github\ROFFUSWEB\ROFFUSNetCore\Roffus.Domain\bin\Debug\netstandard2.0\Roffus.Domain.dll
+D:\github\ROFFUSWEB\ROFFUSNetCore\Roffus.Domain\bin\Debug\netstandard2.0\Roffus.Domain.pdb
+D:\github\ROFFUSWEB\ROFFUSNetCore\Roffus.Domain\obj\Debug\netstandard2.0\Roffus.Domain.csprojAssemblyReference.cache
+D:\github\ROFFUSWEB\ROFFUSNetCore\Roffus.Domain\obj\Debug\netstandard2.0\Roffus.Domain.csproj.CoreCompileInputs.cache
+D:\github\ROFFUSWEB\ROFFUSNetCore\Roffus.Domain\obj\Debug\netstandard2.0\Roffus.Domain.AssemblyInfoInputs.cache
+D:\github\ROFFUSWEB\ROFFUSNetCore\Roffus.Domain\obj\Debug\netstandard2.0\Roffus.Domain.AssemblyInfo.cs
+D:\github\ROFFUSWEB\ROFFUSNetCore\Roffus.Domain\obj\Debug\netstandard2.0\Roffus.Domain.dll
+D:\github\ROFFUSWEB\ROFFUSNetCore\Roffus.Domain\obj\Debug\netstandard2.0\Roffus.Domain.pdb

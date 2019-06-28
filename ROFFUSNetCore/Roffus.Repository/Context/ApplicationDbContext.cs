@@ -12,6 +12,7 @@ namespace Roffus.Repository.Context
         public DbSet<Plantilla> Plantillas {get;set;}   
         public DbSet<TiendaVirtual> TiendasVirtuales {get;set;}
         public DbSet<Usuario> Usuarios {get;set;}   
+        public DbSet<SubCategoria> SubCategorias {get;set;}
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) 
         : base(options) {}
     }

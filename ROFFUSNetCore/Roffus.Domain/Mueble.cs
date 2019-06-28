@@ -12,7 +12,7 @@ namespace Roffus.Domain
         public double Ancho { get; set; }
         public double Largo { get; set; }
         public TiendaVirtual CodTienda { get; set; }
-        public Categoria CodCategoria { get; set; }
+        public SubCategoria CodSubCategoria { get; set; }
         public String Descripcion { get; set; }
         public String Imagen { get; set; }
         public String Icono { get; set; }

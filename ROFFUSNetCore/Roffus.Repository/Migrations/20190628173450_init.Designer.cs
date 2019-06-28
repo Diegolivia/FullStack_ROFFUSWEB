@@ -10,7 +10,7 @@ using Roffus.Repository.Context;
 namespace Roffus.Repository.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190531060204_init")]
+    [Migration("20190628173450_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -67,7 +67,7 @@ namespace Roffus.Repository.Migrations
 
                     b.Property<double>("Ancho");
 
-                    b.Property<int?>("CodCategoria1");
+                    b.Property<int?>("CodSubCategoria1");
 
                     b.Property<int?>("CodTienda1");
 
@@ -83,7 +83,7 @@ namespace Roffus.Repository.Migrations
 
                     b.HasKey("CodMueble");
 
-                    b.HasIndex("CodCategoria1");
+                    b.HasIndex("CodSubCategoria1");
 
                     b.HasIndex("CodTienda1");
 
@@ -132,6 +132,21 @@ namespace Roffus.Repository.Migrations
                     b.ToTable("Plantillas");
                 });
 
+            modelBuilder.Entity("Roffus.Domain.SubCategoria", b =>
+                {
+                    b.Property<int>("CodSubCategoria")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CodCategoria");
+
+                    b.Property<string>("NombreSubCategoria");
+
+                    b.HasKey("CodSubCategoria");
+
+                    b.ToTable("SubCategorias");
+                });
+
             modelBuilder.Entity("Roffus.Domain.TiendaVirtual", b =>
                 {
                     b.Property<int>("CodTienda")
@@ -177,9 +192,9 @@ namespace Roffus.Repository.Migrations
 
             modelBuilder.Entity("Roffus.Domain.Mueble", b =>
                 {
-                    b.HasOne("Roffus.Domain.Categoria", "CodCategoria")
+                    b.HasOne("Roffus.Domain.SubCategoria", "CodSubCategoria")
                         .WithMany()
-                        .HasForeignKey("CodCategoria1");
+                        .HasForeignKey("CodSubCategoria1");
 
                     b.HasOne("Roffus.Domain.TiendaVirtual", "CodTienda")
                         .WithMany()
