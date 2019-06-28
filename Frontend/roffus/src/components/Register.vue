@@ -76,15 +76,16 @@
     }),
     props: {
       source: String
-    }
+    },
+    dialog: false
   }
   //El de abajo es para el botón-dialogo
-  export default {
+ /* export default {
     data () {
       return {
         dialog: false
       }
     }
-  }
+  }*/
 
 </script>

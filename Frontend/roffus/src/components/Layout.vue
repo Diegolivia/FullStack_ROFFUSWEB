@@ -29,7 +29,7 @@
                 con los culaes podrás renovar el espíritu de tu habitación diseñandolo fácilmente con tus ideas
               </v-card-text> 
                <v-card-actions>
-                   <v-btn flat color="black">Comenzar</v-btn>
+                   <v-btn flat color="black" to="/register">Comenzar</v-btn>
                </v-card-actions>
               
              </v-card>
