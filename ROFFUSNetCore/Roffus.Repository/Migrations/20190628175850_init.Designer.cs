@@ -10,7 +10,7 @@ using Roffus.Repository.Context;
 namespace Roffus.Repository.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190628173450_init")]
+    [Migration("20190628175850_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

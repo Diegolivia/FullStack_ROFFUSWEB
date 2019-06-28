@@ -44,10 +44,11 @@ namespace Roffus.Api
             services.AddTransient<IRepositorioPlantilla, RepositorioPlantilla>();
             services.AddTransient<IRepositorioTiendaVirtual, RepositorioTiendaVirtual>();   
             services.AddTransient<IRepositorioUsuario, RepositorioUsuario>();       
-         
+                     services.AddTransient<IRepositorioSubCategoria, RepositorioSubCategoria>();
 
 
             services.AddTransient<IServicioCategoria, ServicioCategoria>();
+                        services.AddTransient<IServicioSubCategoria, ServicioSubCategoria>();
             services.AddTransient<IServicioListaMuebles, ServicioListaMuebles>();
             services.AddTransient<IServicioMueble, ServicioMueble>();
             services.AddTransient<IServicioPaquete, ServicioPaquete>();
