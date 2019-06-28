@@ -30,6 +30,11 @@ namespace Roffus.Repository.Implementations
 
          public List<Mueble> Filtrador(Mueble entity)
         {
+                       
+            var Test = Context.Muebles;
+            Test=Test.Where(x=>x.Subcategoria.nombreSubCategoria.Equals(entity.Subcategoria.nombreSubCategoria));
+            
+
             var Mueblee = Context.Muebles
                                     .Where(
                                         x => x.Subcategoria.nombreSubCategoria.Equals(entity.Subcategoria.nombreSubCategoria
